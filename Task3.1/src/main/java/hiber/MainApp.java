@@ -39,7 +39,7 @@ public class MainApp {
             System.out.println("__________________________________");
         }
 
-        User owner = userService.getUserByCar("BMW", 5);
+        User owner = userService.getUserByCar("Audi", 8);
 
         userService.dropAllTables();
 

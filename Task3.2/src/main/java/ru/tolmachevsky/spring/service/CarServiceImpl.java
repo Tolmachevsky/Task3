@@ -15,7 +15,7 @@ import java.util.List;
 @PropertySource("classpath:userController.properties")
 public class CarServiceImpl implements CarService {
     @Value("${maxCar}")
-    private String maxCar;
+    private Integer maxCar;
     @Autowired
     private CarDao carDao;
 
@@ -26,9 +26,9 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> getResponse(String count) {
-        if (count != null && Integer.parseInt(count) < Integer.parseInt(maxCar)) {
-            return carDao.getResponse(Integer.parseInt(count));
+    public List<Car> getCars(Integer count) {
+        if (count != null && count < maxCar) {
+            return carDao.getCars(count);
         } else {
             return carDao.getAllCars();
         }

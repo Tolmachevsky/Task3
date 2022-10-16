@@ -14,8 +14,8 @@ public class UserController {
 
     @GetMapping("/cars")
     public String getCars
-            (@RequestParam("count") String count, Model model) {
-        model.addAttribute("cars", carService.getResponse(count));
+            (@RequestParam("count") Integer count, Model model) {
+        model.addAttribute("cars", carService.getCars(count));
         return "cars";
     }
 }

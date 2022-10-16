@@ -23,7 +23,7 @@ public class CarDaoImpl implements CarDao {
 
     @Transactional
     @Override
-    public List<Car> getResponse(int count) {
+    public List<Car> getCars(int count) {
         List<Car> list = sessionFactory.getCurrentSession().createQuery("from Car", Car.class).list().stream()
                 .limit(count)
                 .collect(Collectors.toList());

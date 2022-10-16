@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface CarDao {
 
-    public void addCar(Car car);
+    void addCar(Car car);
 
-    List<Car> getResponse(int count);
+    List<Car> getCars(int count);
 
     List<Car> getAllCars();
 

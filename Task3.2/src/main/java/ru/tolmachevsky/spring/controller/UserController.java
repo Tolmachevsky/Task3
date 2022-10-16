@@ -5,16 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.tolmachevsky.spring.service.ServiceCar;
+import ru.tolmachevsky.spring.service.CarService;
 
 @Controller
 public class UserController {
     @Autowired
-    private ServiceCar serviceCar;
+    private CarService carService;
 
     @GetMapping("/cars")
-    public String cars(@RequestParam("count") String count, Model model) {
-        model.addAttribute("cars", serviceCar.getResponse(count));
+    public String getCars
+            (@RequestParam("count") String count, Model model) {
+        model.addAttribute("cars", carService.getResponse(count));
         return "cars";
     }
 }

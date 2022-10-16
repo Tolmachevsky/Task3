@@ -6,15 +6,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import ru.tolmachevsky.spring.dao.CarDao;
 import ru.tolmachevsky.spring.model.Car;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Service
-@PropertySource("classpath:mycontroller.properties")
+@PropertySource("classpath:userController.properties")
 public class ServiceCarImpl implements ServiceCar {
     @Value("${maxCar}")
     private String maxCar;
@@ -28,12 +26,11 @@ public class ServiceCarImpl implements ServiceCar {
     }
 
     @Override
-    public void getResponse(HttpServletRequest request, Model model) {
-        String count = request.getParameter("count");
+    public List<Car> getResponse(String count) {
         if (count != null && Integer.parseInt(count) < Integer.parseInt(maxCar)) {
-            model.addAttribute("cars", carDao.getResponse(Integer.parseInt(count)));
+            return carDao.getResponse(Integer.parseInt(count));
         } else {
-            model.addAttribute("cars", carDao.getAllCars());
+            return carDao.getAllCars();
         }
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 public interface ServiceCar {
     void addCar(Car car);
 
-    void getResponse(HttpServletRequest request, Model model);
+    List <Car> getResponse(String count);
 
     List<Car> getAllCars();
 }
